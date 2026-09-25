@@ -14,7 +14,8 @@
     "format": "prettier --write .",
     "test:e2e": "playwright test",
     "docs:images": "node scripts/image-prompts.ts",
-    "postbuild": "node scripts/postbuild.mjs"
+    "postbuild": "node scripts/postbuild.mjs",
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

@@ -36,6 +36,6 @@ npm run test:e2e     # Playwright (спершу npm run build)
 
 ## Деплой
 
-GitHub Pages: кожен push у `main` запускає `.github/workflows/deploy.yml`. Інтеграції (обробник форм, аналітика) вмикаються змінними середовища, див. `.env.example`.
+GitHub Pages: `npm run deploy` збирає сайт з правильним base path і публікує `out/` у гілку `gh-pages`. Для автодеплою з CI скопіюйте `docs/github-actions-deploy.yml` у `.github/workflows/` (токену потрібен scope `workflow`). Інтеграції (обробник форм, аналітика) вмикаються змінними середовища, див. `.env.example`.
 
 Документація проєкту лежить у `docs/`.
