@@ -48,12 +48,15 @@ export function TechScroller({ items, usedIn }: { items: TechItem[]; usedIn: str
                 refs.current[i] = el;
               }}
               data-index={i}
-              className={cn("flex min-h-[72vh] flex-col justify-center py-10 transition-opacity duration-500", active === i ? "opacity-100" : "opacity-35")}
+              className={cn(
+                "flex min-h-[72vh] flex-col justify-center border-l-2 py-10 pl-8 transition-[border-color] duration-500",
+                active === i ? "border-accent" : "border-line",
+              )}
             >
               <p className="t-overline text-accent">
                 {String(i + 1).padStart(2, "0")} · {t.name}
               </p>
-              <h3 className="t-h2 mt-4 max-w-md">{t.title}</h3>
+              <h3 className={cn("t-h2 mt-4 max-w-md transition-colors duration-500", active === i ? "text-fg" : "text-fg-muted")}>{t.title}</h3>
               <ul className="mt-6 flex max-w-md flex-col gap-3">
                 {t.benefits.map((b) => (
                   <li key={b} className="flex gap-3 text-fg-muted">
