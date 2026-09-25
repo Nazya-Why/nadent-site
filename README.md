@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NaDent — сайт стоматологічної клініки
 
-## Getting Started
+Next.js 16 (App Router, static export) · TypeScript · Tailwind CSS 4 · дві мови (UA / EN) · Liquid Glass-дизайн.
 
-First, run the development server:
+> Демо-проєкт: клініка вигадана. Що замінити перед запуском, див. `docs/TODO_CONTENT.md`.
+
+## Запуск
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build        # статичний сайт у папці out/
+npm start            # переглянути out/ локально
+npm run test:e2e     # Playwright (спершу npm run build)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Як замінити фото
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Знайдіть потрібний id у `docs/IMAGE_PROMPTS.md` (наприклад, `hero-desktop`).
+2. Покладіть файл `public/images/hero-desktop.jpg` (підходять `.jpg`, `.png`, `.webp`).
+3. `npm run build`: скрипт сам створить AVIF/WebP потрібних розмірів, а плейсхолдер зміниться на фото.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Де редагувати контент
 
-## Learn More
+| Що | Файл |
+|---|---|
+| Контакти, графік, ліцензія, рейтинг | `src/config/clinic.ts` |
+| Ціни | `src/content/prices.ts` |
+| Послуги | `src/content/services.ts` |
+| Лікарі | `src/content/doctors.ts` |
+| Тексти головної | `src/content/home.ts` |
+| FAQ | `src/content/faq.ts` |
+| Варіанти заголовка hero для A/B | `src/config/experiments.ts` |
 
-To learn more about Next.js, take a look at the following resources:
+Кожен файл містить обидві мови поруч (`uk` / `en`), тож TypeScript не дасть забути переклад.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Деплой
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GitHub Pages: кожен push у `main` запускає `.github/workflows/deploy.yml`. Інтеграції (обробник форм, аналітика) вмикаються змінними середовища, див. `.env.example`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Документація проєкту лежить у `docs/`.

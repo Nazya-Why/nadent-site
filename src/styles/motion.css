@@ -1,0 +1,211 @@
+/*
+ * Scroll reveal. Content is hidden only when JS is running (html.js), so the
+ * page stays readable without JS. A single IntersectionObserver adds .is-in.
+ */
+
+@layer components {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.8s var(--ease-out),
+      transform 0.9s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+
+  html.js [data-reveal="fade"] {
+    transform: none;
+  }
+
+  html.js [data-reveal="scale"] {
+    transform: scale(0.96);
+  }
+
+  html.js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Line-by-line text reveal */
+  html.js [data-reveal-lines] > span {
+    display: inline-block;
+    opacity: 0.12;
+    transition: opacity 0.9s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  html.js [data-reveal-lines].is-in > span {
+    opacity: 1;
+  }
+
+  /* Image zoom-out as it enters the viewport (apple.com style) */
+  @supports (animation-timeline: view()) {
+    [data-scroll-zoom] {
+      animation: nd-scroll-zoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+
+  @keyframes nd-scroll-zoom {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes nd-menu-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -8px, 0) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes nd-fade-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes nd-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes nd-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    80%,
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
+  }
+
+  /* Transform-only entrance: safe for LCP elements (never hidden) */
+  @keyframes nd-rise {
+    from {
+      transform: translate3d(0, 24px, 0);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .nd-parallax {
+      animation: nd-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+
+  @keyframes nd-parallax {
+    from {
+      transform: translate3d(0, -4%, 0);
+    }
+    to {
+      transform: translate3d(0, 4%, 0);
+    }
+  }
+
+  @keyframes nd-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes nd-pulse {
+    0% {
+      box-shadow: 0 0 0 0 currentColor;
+    }
+    70% {
+      box-shadow: 0 0 0 6px transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  @keyframes nd-shimmer {
+    from {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes nd-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .pressable {
+    transition:
+      transform var(--dur-micro) var(--ease-out),
+      background-color var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out),
+      opacity var(--dur-fast) var(--ease-out);
+  }
+  .pressable:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: scale(0.97);
+  }
+
+  .lift {
+    transition:
+      transform var(--dur-base) var(--ease-out),
+      box-shadow var(--dur-base) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translate3d(0, -4px, 0);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 280ms;
+  animation-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal],
+  html.js [data-reveal-lines] > span {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  [data-scroll-zoom],
+  .nd-parallax {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

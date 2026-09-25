@@ -1,0 +1,142 @@
+/* Native <dialog> as an iOS-style sheet (mobile) and a centred card (desktop). */
+
+@layer components {
+  html.nd-locked {
+    overflow: hidden;
+    padding-right: var(--scrollbar-w, 0);
+  }
+
+  .nd-dialog {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    max-width: 100vw;
+    max-height: 100dvh;
+    overflow: visible;
+    opacity: 0;
+    transition:
+      opacity 280ms var(--ease-out),
+      transform 460ms var(--ease-sheet),
+      overlay 460ms allow-discrete,
+      display 460ms allow-discrete;
+  }
+
+  .nd-dialog[open] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nd-dialog::backdrop {
+    background: rgb(0 0 0 / 0);
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+    transition:
+      background 320ms var(--ease-out),
+      backdrop-filter 320ms var(--ease-out),
+      overlay 460ms allow-discrete,
+      display 460ms allow-discrete;
+  }
+
+  .nd-dialog[open]::backdrop {
+    background: rgb(0 0 0 / 0.32);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  @starting-style {
+    .nd-dialog[open] {
+      opacity: 0;
+    }
+    .nd-dialog[open]::backdrop {
+      background: rgb(0 0 0 / 0);
+      backdrop-filter: blur(0);
+    }
+  }
+
+  .nd-dialog__panel {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+    overflow: hidden;
+  }
+
+  .nd-dialog__body {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex: 1 1 auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nd-dialog__footer {
+    flex: none;
+    border-top: 1px solid var(--line);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  }
+
+  /* Sheet: bottom on mobile */
+  .nd-dialog--sheet {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: calc(100dvh - 24px);
+    transform: translate3d(0, 100%, 0);
+  }
+  @starting-style {
+    .nd-dialog--sheet[open] {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  .nd-dialog--sheet .nd-dialog__panel {
+    border-radius: 28px 28px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  @media (min-width: 768px) {
+    .nd-dialog--sheet {
+      inset: 0;
+      margin: auto;
+      width: calc(100% - 48px);
+      height: fit-content;
+      max-height: min(880px, calc(100dvh - 64px));
+      transform: translate3d(0, 24px, 0) scale(0.98);
+    }
+    @starting-style {
+      .nd-dialog--sheet[open] {
+        transform: translate3d(0, 24px, 0) scale(0.98);
+      }
+    }
+    .nd-dialog--sheet .nd-dialog__panel {
+      border-radius: 32px;
+      padding-bottom: 0;
+    }
+  }
+
+  /* Full-screen menu */
+  .nd-dialog--full {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    transform: translate3d(0, -12px, 0);
+  }
+  @starting-style {
+    .nd-dialog--full[open] {
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+  .nd-dialog--full .nd-dialog__panel {
+    height: 100%;
+    border-radius: 0;
+    --glass-bg: color-mix(in srgb, var(--bg) 88%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nd-dialog,
+    .nd-dialog::backdrop {
+      transition: none;
+    }
+  }
+}

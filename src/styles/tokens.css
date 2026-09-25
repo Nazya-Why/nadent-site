@@ -1,0 +1,197 @@
+/*
+ * NaDent design tokens. Source of truth for colour, type, space, radius,
+ * shadow and motion. Documented in docs/DESIGN_SYSTEM.md.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Colour: surfaces */
+  --bg: #fbfbfd;
+  --bg-elevated: #ffffff;
+  --bg-sand: #f4f1ec;
+  --bg-sunken: #f2f2f5;
+  --bg-inverse: #0b0c0e;
+
+  /* Colour: text */
+  --fg: #1d1d1f;
+  --fg-muted: #6b6b70;
+  --fg-subtle: #86868b;
+  --fg-inverse: #f5f5f7;
+  --fg-inverse-muted: #a1a1a6;
+
+  /* Colour: accent (Lagoon) */
+  --accent: #0b6e75;
+  --accent-hover: #0a5f66;
+  --accent-active: #084e54;
+  --accent-fg: #ffffff;
+  --accent-soft: #e4f1f1;
+  --accent-soft-fg: #0a5f66;
+  --accent-rgb: 11 110 117;
+
+  /* Colour: semantic */
+  --success: #17753a;
+  --success-soft: #e6f4ea;
+  --warning: #9a5b00;
+  --warning-soft: #fdf1dc;
+  --error: #c4252d;
+  --error-soft: #fdecec;
+  --info: #0b62c4;
+  --info-soft: #e7f0fb;
+
+  /* Colour: lines */
+  --line: rgb(0 0 0 / 0.08);
+  --line-strong: rgb(0 0 0 / 0.16);
+
+  /* Glass */
+  --glass-regular: rgb(255 255 255 / 0.64);
+  --glass-clear: rgb(255 255 255 / 0.18);
+  --glass-tinted: rgb(11 110 117 / 0.8);
+  --glass-prominent: rgb(255 255 255 / 0.84);
+  --glass-rim-top: rgb(255 255 255 / 0.9);
+  --glass-rim-bottom: rgb(255 255 255 / 0.25);
+  --glass-inner: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(0 0 0 / 0.06);
+  --glass-shine: rgb(255 255 255 / 0.5);
+
+  /* Placeholder gradient for ImageSlot */
+  --ph-a: #e7efee;
+  --ph-b: #f4efe7;
+  --ph-c: #dde9ea;
+  --ph-fg: #5d6f70;
+
+  /* Typography */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", var(--font-inter), "Inter",
+    "Segoe UI", Roboto, sans-serif;
+  --text-display: clamp(3rem, 1.4155rem + 6.7606vw, 7.5rem);
+  --text-h1: clamp(2.5rem, 1.7958rem + 3.0047vw, 4.5rem);
+  --text-h2: clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+  --text-title: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+  --text-body-lg: clamp(1.125rem, 1.059rem + 0.2817vw, 1.3125rem);
+  --text-body: 1.0625rem;
+  --text-caption: 0.875rem;
+  --text-overline: 0.8125rem;
+
+  /* Space & layout */
+  --gutter: clamp(16px, 5vw, 64px);
+  --container: 1280px;
+  --container-wide: 1440px;
+  --container-narrow: 760px;
+  --section-y: clamp(80px, 11vw, 160px);
+  --header-h: 56px;
+  --actionbar-h: 64px;
+
+  /* Radius */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 44px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 1px rgb(0 0 0 / 0.03);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.03), 0 8px 24px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.03), 0 24px 64px -8px rgb(0 0 0 / 0.12);
+  --shadow-glass: 0 1px 1px rgb(0 0 0 / 0.04), 0 8px 32px -4px rgb(0 0 0 / 0.1);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-micro: 150ms;
+  --dur-fast: 220ms;
+  --dur-base: 360ms;
+  --dur-slow: 600ms;
+
+  /* Focus */
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 72px;
+  }
+}
+
+/* Dark theme: explicit choice or system preference without an explicit light choice */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0c0e;
+  --bg-elevated: #151618;
+  --bg-sand: #17161a;
+  --bg-sunken: #1c1c1e;
+  --bg-inverse: #000000;
+  --fg: #f5f5f7;
+  --fg-muted: #a1a1a6;
+  --fg-subtle: #8a8a8f;
+  --fg-inverse: #f5f5f7;
+  --fg-inverse-muted: #a1a1a6;
+  --accent: #5ec8cc;
+  --accent-hover: #7ad4d7;
+  --accent-active: #4ab8bc;
+  --accent-fg: #0b0c0e;
+  --accent-soft: #11292b;
+  --accent-soft-fg: #8adfe2;
+  --accent-rgb: 94 200 204;
+  --success: #3dd68c;
+  --success-soft: #0f2a1d;
+  --warning: #ffcc4d;
+  --warning-soft: #2e2410;
+  --error: #ff7a73;
+  --error-soft: #331414;
+  --info: #6eb0ff;
+  --info-soft: #11213a;
+  --line: rgb(255 255 255 / 0.1);
+  --line-strong: rgb(255 255 255 / 0.2);
+  --glass-regular: rgb(30 30 32 / 0.6);
+  --glass-clear: rgb(0 0 0 / 0.2);
+  --glass-tinted: rgb(94 200 204 / 0.85);
+  --glass-prominent: rgb(28 28 30 / 0.82);
+  --glass-rim-top: rgb(255 255 255 / 0.28);
+  --glass-rim-bottom: rgb(255 255 255 / 0.06);
+  --glass-inner: rgb(255 255 255 / 0.1);
+  --glass-edge: rgb(0 0 0 / 0.4);
+  --glass-shine: rgb(255 255 255 / 0.14);
+  --ph-a: #14201f;
+  --ph-b: #1c1a17;
+  --ph-c: #122325;
+  --ph-fg: #8fa5a6;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 24px 64px -8px rgb(0 0 0 / 0.6);
+  --shadow-glass: 0 1px 1px rgb(0 0 0 / 0.3), 0 8px 32px -4px rgb(0 0 0 / 0.5);
+}
+
+/* Sections that are always dark (e.g. the fear block) reuse the dark palette locally */
+.tone-dark {
+  --bg: #0b0c0e;
+  --bg-elevated: #17181b;
+  --bg-sunken: #1c1c1e;
+  --fg: #f5f5f7;
+  --fg-muted: #a1a1a6;
+  --fg-subtle: #8a8a8f;
+  --accent: #5ec8cc;
+  --accent-hover: #7ad4d7;
+  --accent-active: #4ab8bc;
+  --accent-fg: #0b0c0e;
+  --accent-soft: #11292b;
+  --accent-soft-fg: #8adfe2;
+  --line: rgb(255 255 255 / 0.12);
+  --line-strong: rgb(255 255 255 / 0.22);
+  --glass-regular: rgb(30 30 32 / 0.6);
+  --glass-prominent: rgb(28 28 30 / 0.82);
+  --glass-rim-top: rgb(255 255 255 / 0.28);
+  --glass-rim-bottom: rgb(255 255 255 / 0.06);
+  --glass-inner: rgb(255 255 255 / 0.1);
+  --glass-shine: rgb(255 255 255 / 0.14);
+  --ph-a: #14201f;
+  --ph-b: #1c1a17;
+  --ph-c: #122325;
+  --ph-fg: #8fa5a6;
+  color-scheme: dark;
+  background-color: var(--bg);
+  color: var(--fg);
+}

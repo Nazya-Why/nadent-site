@@ -1,0 +1,6 @@
+out
+.next
+node_modules
+src/generated
+public
+*.md
