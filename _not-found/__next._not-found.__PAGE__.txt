@@ -1,0 +1,19 @@
+1:"$Sreact.fragment"
+2:I[97367,["/nadent-site/_next/static/chunks/1lk0i6ziprcua.js","/nadent-site/_next/static/chunks/0jzsz929iwsdg.js","/nadent-site/_next/static/chunks/14yp3c_dbrjl6.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+7:I[97367,["/nadent-site/_next/static/chunks/1lk0i6ziprcua.js","/nadent-site/_next/static/chunks/0jzsz929iwsdg.js","/nadent-site/_next/static/chunks/14yp3c_dbrjl6.js"],"ViewportBoundary"]
+8:I[97367,["/nadent-site/_next/static/chunks/1lk0i6ziprcua.js","/nadent-site/_next/static/chunks/0jzsz929iwsdg.js","/nadent-site/_next/static/chunks/14yp3c_dbrjl6.js"],"MetadataBoundary"]
+a:I[39756,["/nadent-site/_next/static/chunks/1lk0i6ziprcua.js","/nadent-site/_next/static/chunks/0jzsz929iwsdg.js","/nadent-site/_next/static/chunks/14yp3c_dbrjl6.js"],"default"]
+b:I[37457,["/nadent-site/_next/static/chunks/1lk0i6ziprcua.js","/nadent-site/_next/static/chunks/0jzsz929iwsdg.js","/nadent-site/_next/static/chunks/14yp3c_dbrjl6.js"],"default"]
+6:X
+d:X
+d:C
+0:{"buildId":"8uj3bDDOazJt2zboM1TLN","data":[{"rsc":["$","$1","c",{"children":[null,null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"404 · NaDent"}],["$","meta","1",{"name":"robots","content":"noindex, follow"}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@9","staleTime":"$6","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$La",null,{"parallelRouterKey":"children","template":["$","$Lb",null,{}]}]]}],"isPartial":"$@c","staleTime":"$6","varyParams":"$d"}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
+4:null
+f:true
+6:300
+6:C
+e:0
+9:"$undefined"
+c:"$undefined"
+5:"$undefined"
